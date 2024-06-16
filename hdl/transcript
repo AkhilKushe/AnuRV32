@@ -1,0 +1,281 @@
+# Loading project anu_core
+# Compile of ID.v was successful.
+# Compile of anu_core.v failed with 2 errors.
+# Compile of anu_core.v was successful.
+# Compile of top_tb.v was successful.
+vsim work.top_tb
+# vsim work.top_tb 
+# Start time: 19:46:38 on Jun 08,2024
+# Loading work.top_tb
+# Loading work.mem
+# Loading work.data_memory
+# Loading work.anu_core
+# Loading work.instr_decode
+# Loading work.uCode_decode
+# Loading work.extract_imm
+# Loading work.register_file
+# Loading work.alu_32
+# Loading work.extend32
+# Loading work.zeroExt
+# Loading work.sigExt
+# Loading work.p_cntr
+do dmem.do
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of control_unit.v was successful.
+# Compile of anu_core.v was successful.
+# 2 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.anu_core
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+restart -f
+do dmem.do
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of anu_core.v was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.anu_core
+do dmem.do
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+restart -f
+do dmem.do
+restart
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 21:38:53 on Jun 10,2024, Elapsed time: 49:52:15
+# Errors: 0, Warnings: 1
+# reading /home/akhilkushe/intelFPGA_lite/20.1/modelsim_ase/linuxaloem/../modelsim.ini
+# Loading project adder
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder.vhd was successful.
+# Compile of multi_addr.vhd was successful.
+# Compile of multi_addr.vhd failed with 1 errors.
+# Compile of multi_addr.vhd was successful.
+# Compile of multi_addr.vhd was successful.
+# Compile of multi_addr.vhd failed with 2 errors.
+# Compile of multi_addr.vhd was successful.
+# Compile of multi_addr.vhd was successful.
+# Compile of multi_addr.vhd failed with 2 errors.
+# Compile of multi_addr.vhd failed with 2 errors.
+# Compile of multi_addr.vhd failed with 1 errors.
+# Compile of multi_addr.vhd failed with 1 errors.
+# Compile of full_adder.vhd was successful.
+# Compile of full_adder.vhd was successful.
+vsim work.multibit_add
+# vsim work.multibit_add 
+# Start time: 22:07:55 on Jun 10,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading work.multibit_add(mba)
+# Compile of multi_addr.vhd was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.multibit_add(mba)
+# Loading work.full_adder(fa)
+add wave -position insertpoint  \
+sim:/multibit_add/A \
+sim:/multibit_add/B \
+sim:/multibit_add/Cin \
+sim:/multibit_add/Cout \
+sim:/multibit_add/SUM
+force -freeze sim:/multibit_add/A 20 0
+# Value length (2) does not equal array index length (8).
+# ** UI-Msg: (vsim-4011) Invalid force value: 20 0.
+# 
+force -freeze sim:/multibit_add/B 10011010 0
+force -freeze sim:/multibit_add/A 00010111 0
+force -freeze sim:/multibit_add/Cin 1 0
+run
+force -freeze sim:/multibit_add/A 11111111 0
+run
+force -freeze sim:/multibit_add/Cin 0 0
+run
+quit -sim
+# End time: 22:11:41 on Jun 10,2024, Elapsed time: 0:03:46
+# Errors: 0, Warnings: 1
+# Compile of top_tb.vhd failed with 24 errors.
+# Compile of top_tb.vhd failed with 8 errors.
+# Compile of top_tb.vhd was successful.
+vsim work.testbench_full_adder
+# vsim work.testbench_full_adder 
+# Start time: 22:27:49 on Jun 10,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.testbench_full_adder(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading work.multibit_add(mba)
+# ** Fatal: (vsim-3348) Port length (8) does not match actual length (4) for port "/testbench_full_adder/uut/A".
+#    Time: 0 ps  Iteration: 0  Instance: /testbench_full_adder/uut File: /home/akhilkushe/Desktop/Projects/VHDL_adder/multi_addr.vhd Line: 7
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 22:27:49 on Jun 10,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 4
+# Compile of top_tb.vhd failed with 4 errors.
+# Compile of top_tb.vhd failed with 4 errors.
+# Compile of top_tb.vhd was successful.
+vsim work.testbench_full_adder
+# vsim work.testbench_full_adder 
+# Start time: 22:29:28 on Jun 10,2024
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.testbench_full_adder(behavior)
+# Loading ieee.std_logic_arith(body)
+# Loading work.multibit_add(mba)
+# Loading work.full_adder(fa)
+add wave -position insertpoint  \
+sim:/testbench_full_adder/A \
+sim:/testbench_full_adder/B \
+sim:/testbench_full_adder/Cin \
+sim:/testbench_full_adder/S \
+sim:/testbench_full_adder/Cout
+run
+quit -sim
+# End time: 22:31:07 on Jun 10,2024, Elapsed time: 0:01:39
+# Errors: 0, Warnings: 4
+# reading /home/akhilkushe/intelFPGA_lite/20.1/modelsim_ase/linuxaloem/../modelsim.ini
+# Loading project anu_core
+# Compile of anu_core.v was successful.
+# Compile of top_tb.v was successful.
+# 2 compiles, 0 failed with no errors.
+vsim work.top_tb
+# vsim work.top_tb 
+# Start time: 22:00:15 on Jun 15,2024
+# Loading work.top_tb
+# Loading work.mem
+# Loading work.data_memory
+# Loading work.anu_core
+# Loading work.instr_decode
+# Loading work.uCode_decode
+# Loading work.extract_imm
+# Loading work.register_file
+# Loading work.alu_32
+# Loading work.extend32
+# Loading work.zeroExt
+# Loading work.sigExt
+# Loading work.p_cntr
+do dmem.do
+run
+# Compile of alu.v was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.alu_32
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# Compile of alu.v was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.alu_32
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+quit -sim
+# End time: 11:24:49 on Jun 16,2024, Elapsed time: 13:24:34
+# Errors: 0, Warnings: 1

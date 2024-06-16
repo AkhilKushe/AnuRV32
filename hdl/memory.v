@@ -1,0 +1,58 @@
+module mem (addr, data);
+
+parameter DATA_WIDTH=32;
+parameter ADDR_WIDTH=16; //modelsim not allowing memory 2^32
+parameter SIZE=1<<ADDR_WIDTH; 
+
+input [ADDR_WIDTH-1:0] addr;
+output reg [DATA_WIDTH-1:0] data;
+
+reg [DATA_WIDTH-1:0] mem [SIZE-1:0];
+
+always @(*) begin
+	data = mem[addr>>2];	//Emulate byte addressible memory at 4 byte boundry
+end
+
+endmodule
+
+// Byte aligned 32 bit access
+/*
+* TODO : create memory controller and proper interface
+*        handle unaligned access
+*/
+module data_memory (addr, 
+			data_in, 
+			en, 
+			access_mode, 
+			data_out);
+
+input [31:0] addr;
+input [31:0] data_in;
+input [1:0] access_mode;
+input en;
+
+output reg [31:0] data_out;
+wire [31:0] data_out_w;
+
+reg [7:0] dmem [(1<<16) -1 :0];
+
+parameter READ=2'b00;
+parameter WRITE_B=2'b01;
+parameter WRITE_HW=2'b10;
+parameter WRITE_W=2'b11;
+
+// Read and write
+always @(*) begin
+	if ( en) begin
+		case (access_mode)
+			READ: data_out = {dmem[addr[15:0]+3], dmem[addr[15:0]+2], dmem[addr[15:0]+1], dmem[addr[15:0]]};   // Little endian data store
+			WRITE_B : dmem[addr[15:0]] = data_in[7:0];
+			WRITE_HW : {dmem[addr[15:0]+1], dmem[addr[15:0]]} = data_in[15:0];
+			WRITE_W : {dmem[addr[15:0]+3], dmem[addr[15:0]+2], dmem[addr[15:0]+1], dmem[addr[15:0]]} = data_in;
+		endcase
+	end else begin
+		data_out = data_out;
+	end
+end
+
+endmodule

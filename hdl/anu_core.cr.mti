@@ -1,0 +1,67 @@
+/home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/p_cntr.v {1 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/p_cntr.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module p_cntr
+
+Top level modules:
+	p_cntr
+
+} {} {}} /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/top_tb.v {1 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/top_tb.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module top_tb
+
+Top level modules:
+	top_tb
+
+} {} {}} /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/anu_core.v {1 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/anu_core.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module anu_core
+
+Top level modules:
+	anu_core
+
+} {} {}} /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/register_file.v {1 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/register_file.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module register_file
+
+Top level modules:
+	register_file
+
+} {} {}} /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/control_unit.v {1 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/control_unit.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+
+} {} {}} /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/memory.v {2 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/memory.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module mem
+-- Compiling module data_memory
+** Warning: /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/memory.v(48): (vlog-2182) 'dmem' might be read before written in always_comb or always @* block.
+
+Top level modules:
+	mem
+	data_memory
+
+} {} {}} /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/ID.v {1 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/ID.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module instr_decode
+-- Compiling module uCode_decode
+-- Compiling module extract_imm
+
+Top level modules:
+	instr_decode
+
+} {} {}} /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/extend32.v {1 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/extend32.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module sigExt
+-- Compiling module zeroExt
+-- Compiling module extend32
+
+Top level modules:
+	extend32
+
+} {} {}} /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/branch_unit.v {1 {vlog -work work -stats=none /home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/branch_unit.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module branch_unit
+
+Top level modules:
+	branch_unit
+
+} {} {}}
