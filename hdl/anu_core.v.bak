@@ -61,6 +61,10 @@ assign jal = ctrlSig_w[7];
 assign auipc = ctrlSig_w[8];
 assign lui = ctrlSig_w[9];
 
+initial begin
+    $dumpfile("test1");
+    $dumpvars(0);
+end
 
 
 
@@ -232,11 +236,12 @@ endmodule
 * 4. Modification of PC based on op (kind of works)
 * 00 -> PC = PC (stall) -> bypass mode
 * 01 -> PC = PC + 4 (Next instr, normal op) -> modify adder
-* 11 -> PC = PC + IMM (AUIPC, Branch, JAL) -> modify adder
+* 11 -> PC = PC + IMM (Branch, JAL) -> modify adder
 * 10 -> PC = rs1 + IMM (JALR) -> bypass mode
-* -Ability to load PC in reg file (for JALR), should happen at write back stage ?
+* -Ability to load PC in reg file (for JALR), should happen at write back stage ? yes (done)
+* - Do PC+imm in alu, just bypass pc
 * 
-* 5. LUI, AUIPC, JAL, JALR
+* 5. LUI, AUIPC, JAL, JALR (done)
 *
 * 6. Refactor code, make proper modules, load in quartus
 *

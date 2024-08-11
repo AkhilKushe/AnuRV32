@@ -61,6 +61,10 @@ assign jal = ctrlSig_w[7];
 assign auipc = ctrlSig_w[8];
 assign lui = ctrlSig_w[9];
 
+initial begin
+    $dumpfile("test1");
+    $dumpvars(0);
+end
 
 
 
@@ -179,7 +183,7 @@ p_cntr pc (.clk(clk),
 		.pc_o(pc_w));
 
 assign pc_o = pc_w;
-assign rd_data_w = (jal | jalr)  ? pc_w + 4 : data_wb_w;
+assign rd_data_w = (jal | jalr)  ? pc_w + 4 : data_wb_r;
 
 // write back
 // Half cycle path, maybe be problem in timing, since ALU is constrained in Half cycle

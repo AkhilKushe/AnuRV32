@@ -29,7 +29,7 @@ anu_core c1 (.stall(1'b0),
 		.mem_access_mode(access_mode_w));
 
 initial
-	$readmemb("instr_6.hex", instr_mem.mem);
+	$readmemb("/home/akhilkushe/Desktop/Projects/CPU_scratch/verif/coco_tb/basic_test/instr_test.bin", instr_mem.mem);
 
 always begin
 	clk = 0;

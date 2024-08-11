@@ -1,2 +1,7 @@
 rv32i_assermbler/RISCV-RV32I-Assembler/
 *.swp
+work
+sim_build
+__pycache__
+bkp
+.obsidian

@@ -28,13 +28,33 @@ always @(*) begin
 	end
 end
 
-assign reg_mem[0] = 32'd0;
+always @(*) begin
+	reg_mem[0] = 32'd0;
+end
+
+//assign reg_mem[0] = 0;
 
 //write back
+// For modelsim
+/*
 always @(*) begin
 	if (wen & (|rd)) begin
 		reg_mem[rd] = rd_data;
 	end 
 end
+*/
+// To satisfy icarus verilog :)
+
+genvar                i;
+generate
+   for (i=0; i < 32; i=i+1) begin: register_file
+	  always @(*)
+		if (~rst_n)
+		  reg_mem[i] = 0;
+		else if (wen & (|rd))
+		  if (rd == i)
+			reg_mem[i] = rd_data;
+	 end
+endgenerate
 
 endmodule

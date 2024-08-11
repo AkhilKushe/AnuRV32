@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1721759357" />
+    <testcase name="random_alu" classname="test_1" file="/home/akhilkushe/Desktop/Projects/CPU_scratch/verif/coco_tb/basic_test/test_1.py" lineno="161" time="3.536503553390503" sim_time_ns="1000.001" ratio_time="282.7654447119904" />
+  </testsuite>
+</testsuites>

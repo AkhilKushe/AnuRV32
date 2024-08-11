@@ -48,7 +48,7 @@ reg [15:0] uCode [127:0];
 wire shift_op;
 
 initial
-	$readmemb("uCode.hex", uCode);
+	$readmemb("/home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/uCode.hex", uCode);
 
 always @(*) begin
 	ctrlSig_t = uCode[opcode];
