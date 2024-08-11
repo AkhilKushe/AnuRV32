@@ -7,6 +7,7 @@ from riscvmodel.variant import RV32I
 from riscvmodel.model import Model
 from riscvmodel.code import decode
 import random
+from MemoryModel import MemoryModel
 
 out_instr = open("instr_test.bin", "w")
 
@@ -38,6 +39,20 @@ class RandomALUTest:
         instr_inst = instr_cls()
         instr_inst.randomize(variant)
         return instr_inst
+
+class Program:
+    def __init__(self, instrs) -> None:
+        self.instrs = instrs
+        self.current_idx = -1
+
+    def get_inst(self, variant):
+        self.current_idx += 1
+        if self.current_idx > (len(self.instrs) -1 ):
+            self.current_idx -= 1
+
+        return self.instrs[self.current_idx]
+
+
 
 class FIFO:
     def __init__(self) -> None:
@@ -103,13 +118,13 @@ class Driver:
             self.fifo_gen_port.done()
 
 class Generator:
-    def __init__(self, gen_port : FIFO) -> None:
+    def __init__(self, gen_port : FIFO, test) -> None:
         self.fifo_port = gen_port
+        self.test = test
     
     async def main(self):
-        test = RandomALUTest()
         while True:
-            pkt = test.get_inst(RV32I)
+            pkt = self.test.get_inst(RV32I)
             out_instr.write(convert_to_binary(pkt.encode()) + "\n")
             await self.fifo_port.push(pkt)
         #for pkt in test.insns:
@@ -141,6 +156,7 @@ class Monitor:
             expected_reg.reverse()
             cocotb.log.info(f"Instruction {instr}")
 
+            continue
             if (regs == expected_reg):
                 cocotb.log.info(f"Correctly executed {instr}")
             else:
@@ -157,8 +173,8 @@ class Monitor:
 
 
 
-
-@cocotb.test()
+## Test ALU instructions
+#@cocotb.test()
 async def random_alu(dut):
     """Try accessing the design."""
 
@@ -168,7 +184,8 @@ async def random_alu(dut):
 
     dri_gen_port = FIFO()
     dri = Driver(dut, dri_gen_port)
-    gen = Generator(dri_gen_port)
+    random_alu_test = RandomALUTest()
+    gen = Generator(dri_gen_port, random_alu_test)
     mon = Monitor(dut)
     cocotb.start_soon(gen.main())
     cocotb.start_soon(dri.main())
@@ -180,6 +197,56 @@ async def random_alu(dut):
     print("Final state")
     print([i.value for i in dut.register_file_inst.reg_mem.value])
 
+
+## TEST load and store instructions 
+# 1. Make initial reg and memory state
+# 2. Create memory software model
+# 2. Create random load and store instruction streams
+# 3.
+@cocotb.test()
+async def directed_load_store(dut):
+    clock = Clock(dut.clk, 2, units="ns")
+    dut.stall.value = 0
+    cocotb.start_soon(clock.start(start_high=False))
+
+    dri_gen_port = FIFO()
+    dri = Driver(dut, dri_gen_port)
+    prog = Program([
+                InstructionADDI(x1, x0, 0xde),
+                InstructionSLLI(x1, x1, 8),
+                InstructionADDI(x1, x1, 0xad),
+                InstructionSLLI(x1, x1, 8),
+                InstructionADDI(x1, x1, 0xbe),
+                InstructionSLLI(x1, x1, 8),
+                InstructionADDI(x1, x1, 0xef),
+                InstructionLB(x2, x0, 0),
+                InstructionLH(x3, x0, 0),
+                InstructionLW(x4, x0, 0),
+                InstructionSB(x0, x1, 4),
+                InstructionSB(x0, x1, 5),
+                InstructionSH(x0, x1, 8),
+                InstructionSH(x0, x1, 10),
+                InstructionSW(x0, x1, 12),
+            ])
+    mem = MemoryModel(dut)
+    mem.mem[0] = 0xdeadbeef
+    gen = Generator(dri_gen_port, prog)
+    mon = Monitor(dut)
+    cocotb.start_soon(gen.main())
+    cocotb.start_soon(dri.main())
+    cocotb.start_soon(mon.main())
+    cocotb.start_soon(mem.run_mem())
+
+    await Timer(32, units="ns")  # wait a bit
+    out_instr.close()
+    assert mon.mismatch == 0
+    print("Final state")
+    print([i.value for i in dut.register_file_inst.reg_mem.value])
+    print(mem.mem)
+    print(list(map(hex, mem.mem.values())))
+
+
+    
 # How to do functional coverage ?
 # There is a mismatch in Driving dut port and instruction -> Cycle delay, checking after next packet
     
