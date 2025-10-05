@@ -1,6 +1,8 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1723401834" />
-    <testcase name="random_load_store" classname="test_1" file="/home/akhilkushe/Desktop/Projects/CPU_scratch/verif/coco_tb/basic_test/test_1.py" lineno="205" time="0.13777422904968262" sim_time_ns="32.001" ratio_time="232.27130516883642" />
+    <property name="random_seed" value="1759652512" />
+    <testcase name="directed_load_store" classname="test_1" file="/home/akhilkushe/Desktop/Projects/CPU_scratch/verif/coco_tb/basic_test/test_1.py" lineno="291" time="0.004299640655517578" sim_time_ns="0.001" ratio_time="0.23257757569036266">
+      <failure message="Test failed with RANDOM_SEED=1759652512" />
+    </testcase>
   </testsuite>
 </testsuites>

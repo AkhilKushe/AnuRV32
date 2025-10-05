@@ -2,8 +2,7 @@ import cocotb
 from cocotb.triggers import RisingEdge
 from cocotb.coverage import CoverPoint
 
-# --- RV32I instruction table ---
-# (name, opcode, funct3, funct7) ; use None for unused fields
+
 instr_table = [
     # R-type
     ("ADD",  0b0110011, 0b000, 0b0000000),

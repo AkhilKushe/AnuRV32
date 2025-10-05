@@ -1,0 +1,8 @@
+<top abs_name="top" size="4" coverage="2" cover_percentage="50.0">
+  <instr size="4" coverage="2" cover_percentage="50.0" abs_name="top.instr" weight="1" at_least="1">
+    <bin0 bin="Arith" hits="0" abs_name="top.instr.bin0" />
+    <bin1 bin="Arith imm" hits="7" abs_name="top.instr.bin1" />
+    <bin2 bin="Load Store" hits="3" abs_name="top.instr.bin2" />
+    <bin3 bin="Illegal" hits="0" abs_name="top.instr.bin3" />
+  </instr>
+</top>

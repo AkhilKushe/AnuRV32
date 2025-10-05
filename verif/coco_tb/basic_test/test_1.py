@@ -1,6 +1,7 @@
 import cocotb
 from cocotb.triggers import FallingEdge, Timer, RisingEdge, Edge, Event
 from cocotb.clock import Clock
+import cocotb_coverage.coverage
 from riscvmodel.insn import *
 from riscvmodel.regnames import *
 from riscvmodel.variant import RV32I
@@ -8,9 +9,64 @@ from riscvmodel.model import Model
 from riscvmodel.code import decode
 import random
 from MemoryModel import MemoryModel
+from cocotb_coverage.coverage import *
 
 out_instr = open("instr_test.bin", "w")
 
+instr_table = [
+    # R-type
+    ("ADD",  0b0110011, 0b000, 0b0000000),
+    ("SUB",  0b0110011, 0b000, 0b0100000),
+    ("SLL",  0b0110011, 0b001, 0b0000000),
+    ("SLT",  0b0110011, 0b010, 0b0000000),
+    ("SLTU", 0b0110011, 0b011, 0b0000000),
+    ("XOR",  0b0110011, 0b100, 0b0000000),
+    ("SRL",  0b0110011, 0b101, 0b0000000),
+    ("SRA",  0b0110011, 0b101, 0b0100000),
+    ("OR",   0b0110011, 0b110, 0b0000000),
+    ("AND",  0b0110011, 0b111, 0b0000000),
+
+    # I-type arithmetic/logical
+    ("ADDI", 0b0010011, 0b000, None),
+    ("SLTI", 0b0010011, 0b010, None),
+    ("SLTIU",0b0010011, 0b011, None),
+    ("XORI", 0b0010011, 0b100, None),
+    ("ORI",  0b0010011, 0b110, None),
+    ("ANDI", 0b0010011, 0b111, None),
+    ("SLLI", 0b0010011, 0b001, 0b0000000),
+    ("SRLI", 0b0010011, 0b101, 0b0000000),
+    ("SRAI", 0b0010011, 0b101, 0b0100000),
+
+    # Load (I-type memory)
+    ("LB",   0b0000011, 0b000, None),
+    ("LH",   0b0000011, 0b001, None),
+    ("LW",   0b0000011, 0b010, None),
+    ("LBU",  0b0000011, 0b100, None),
+    ("LHU",  0b0000011, 0b101, None),
+
+    # Store (S-type)
+    ("SB",   0b0100011, 0b000, None),
+    ("SH",   0b0100011, 0b001, None),
+    ("SW",   0b0100011, 0b010, None),
+
+    # Branch (B-type)
+    ("BEQ",  0b1100011, 0b000, None),
+    ("BNE",  0b1100011, 0b001, None),
+    ("BLT",  0b1100011, 0b100, None),
+    ("BGE",  0b1100011, 0b101, None),
+    ("BLTU", 0b1100011, 0b110, None),
+    ("BGEU", 0b1100011, 0b111, None),
+
+    # U-type
+    ("LUI",  0b0110111, None, None),
+    ("AUIPC",0b0010111, None, None),
+
+    # J-type
+    ("JAL",  0b1101111, None, None),
+
+    # I-type JALR
+    ("JALR", 0b1100111, 0b000, None),
+]
 
 def convert_to_binary(number):
     binary_str = bin(number)[2:]
@@ -130,13 +186,20 @@ class Generator:
         #for pkt in test.insns:
         #    await self.fifo_port.push(pkt)
         return 1
-
+INST_Coverage = coverage_section (
+  CoverPoint("top.instr", xf=lambda  instr : instr&0x7F, bins=[0b0110011, 0b0010011, 0b0000011, 0b1110011], bins_labels=["Arith", "Arith imm", "Load Store", "Illegal"]),
+)
 
 class Monitor:
     def __init__(self, dut) -> None:
         self.dut = dut
         self.ref_model = Model(RV32I)
-        self.mismatch = 0
+
+
+    @INST_Coverage   
+    def sample(self, instr):
+        print(instr)
+        pass
 
     async def main(self):
         while True:
@@ -155,7 +218,7 @@ class Monitor:
             expected_reg = [i.unsigned() for i in self.ref_model.state.intreg.regs]
             expected_reg.reverse()
             cocotb.log.info(f"Instruction {instr}")
-
+            self.sample(instr.encode())
             continue
             if (regs == expected_reg):
                 cocotb.log.info(f"Correctly executed {instr}")
@@ -176,6 +239,7 @@ class Monitor:
 ## Test ALU instructions
 #@cocotb.test()
 async def random_alu(dut):
+    print("Running random ALU")
     """Try accessing the design."""
 
     clock = Clock(dut.clk, 2, units="ns")
@@ -198,6 +262,7 @@ async def random_alu(dut):
     print([i.value for i in dut.register_file_inst.reg_mem.value])
 
 
+
 ## TEST load and store instructions 
 # 1. Make initial reg and memory state
 # 2. Create memory software model
@@ -205,6 +270,7 @@ async def random_alu(dut):
 # 3.
 @cocotb.test()
 async def directed_load_store(dut):
+
     clock = Clock(dut.clk, 2, units="ns")
     dut.stall.value = 0
     cocotb.start_soon(clock.start(start_high=False))
@@ -244,6 +310,9 @@ async def directed_load_store(dut):
     print([i.value for i in dut.register_file_inst.reg_mem.value])
     print(mem.mem)
     print(list(map(hex, mem.mem.values())))
+    coverage_db.report_coverage(cocotb.log.info, bins=True)
+    coverage_db.export_to_xml(filename="coverage_fifo.xml")
+    coverage_db.export_to_yaml(filename="coverage_fifo.yml")
 
 
     

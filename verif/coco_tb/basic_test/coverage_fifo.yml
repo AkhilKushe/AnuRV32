@@ -1,0 +1,17 @@
+top:
+  cover_percentage: 50.0
+  coverage: 2
+  size: 4
+  type: <class 'cocotb_coverage.coverage.CoverItem'>
+top.instr:
+  at_least: 1
+  bins:_hits:
+    Arith: 0
+    Arith imm: 7
+    Illegal: 0
+    Load Store: 3
+  cover_percentage: 50.0
+  coverage: 2
+  size: 4
+  type: <class 'cocotb_coverage.coverage.CoverPoint'>
+  weight: 1
