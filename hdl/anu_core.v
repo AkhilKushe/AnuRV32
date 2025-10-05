@@ -49,6 +49,9 @@ wire [31:0] pc_imm_w;
 wire [1:0] pc_mode_w;
 wire [31:0] pc_w;
 
+wire alu_op, i_frame, shift_op, ld, st, branch_op, jalr, jal, auipc, lui;
+wire sign_w;
+
 //Alias, fix in ctrl unit
 assign alu_op = ctrlSig_w[0];
 assign i_frame = ctrlSig_w[1];

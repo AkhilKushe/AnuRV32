@@ -31,7 +31,8 @@ class Transaction (Instruction):
 
 class RandomALUTest:
     def __init__(self) -> None:
-        self.test_set = [InstructionADD, InstructionADDI, InstructionSUB, InstructionXOR, InstructionXORI, InstructionOR, InstructionORI, InstructionAND, InstructionANDI, InstructionSLT, InstructionSLTI, InstructionSLTU, InstructionSLTIU, InstructionSLL, InstructionSLLI, InstructionSRL, InstructionSRLI, InstructionSRAI, InstructionSRA]
+        self.test_set = [InstructionADD, InstructionADDI, InstructionSUB, InstructionXOR, InstructionXORI, InstructionOR, InstructionORI, InstructionAND, InstructionANDI, InstructionSLT, InstructionSLTI, InstructionSLTU, InstructionSLTIU, InstructionSLL, InstructionSLLI, InstructionSRL, InstructionSRLI, InstructionSRA]
+        #self.test_set = [InstructionADD, InstructionADDI, InstructionSUB, InstructionXOR, InstructionXORI, InstructionOR, InstructionORI, InstructionAND, InstructionANDI, InstructionSLT, InstructionSLTI, InstructionSLTU, InstructionSLTIU, InstructionSLL, InstructionSLLI, InstructionSRL, InstructionSRLI, InstructionSRAI, InstructionSRA]
         #self.test_set = [InstructionADD, InstructionADDI, InstructionSUB, InstructionXOR, InstructionXORI, InstructionOR, InstructionORI, InstructionAND, InstructionANDI, InstructionSLT, InstructionSLTI, InstructionSLTU, InstructionSLTIU]
 
     def get_inst(self, variant):
@@ -103,7 +104,7 @@ class Driver:
         return 1
 
     async def drive_dut(self, tx_pkt : Transaction):
-        cocotb.log.info(f"Driving dut ports with packet {str(tx_pkt)}")
+        cocotb.log.info(f"Driving dut ports with packet {str(tx_pkt), tx_pkt}")
         self.dut.instr.value = tx_pkt.encode()
         await RisingEdge(self.dut.clk)
         await FallingEdge(self.dut.clk)
@@ -156,11 +157,11 @@ class Monitor:
             expected_reg.reverse()
             cocotb.log.info(f"Instruction {instr}")
 
-            continue
+            #continue
             if (regs == expected_reg):
                 cocotb.log.info(f"Correctly executed {instr}")
             else:
-                cocotb.log.info(f"Mismatch {instr}")
+                cocotb.log.info(f"Mismatch {instr}, {instr.encode()}")
                 cocotb.log.info(f"Executed value = {regs}" )
                 cocotb.log.info(f"Expected value = {expected_reg}")
                 cocotb.log.info(f"ALU output = {alu_out.value}")
@@ -174,7 +175,7 @@ class Monitor:
 
 
 ## Test ALU instructions
-#@cocotb.test()
+@cocotb.test()
 async def random_alu(dut):
     """Try accessing the design."""
 
@@ -203,7 +204,7 @@ async def random_alu(dut):
 # 2. Create memory software model
 # 2. Create random load and store instruction streams
 # 3.
-@cocotb.test()
+#@cocotb.test()
 async def directed_load_store(dut):
     clock = Clock(dut.clk, 2, units="ns")
     dut.stall.value = 0

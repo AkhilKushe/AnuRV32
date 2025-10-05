@@ -1,6 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1723401834" />
-    <testcase name="random_load_store" classname="test_1" file="/home/akhilkushe/Desktop/Projects/CPU_scratch/verif/coco_tb/basic_test/test_1.py" lineno="205" time="0.13777422904968262" sim_time_ns="32.001" ratio_time="232.27130516883642" />
+    <property name="random_seed" value="1759647379" />
+    <testcase name="random_alu" classname="test_1" file="/home/akhilkushe/Desktop/Projects/CPU_scratch/verif/coco_tb/basic_test/test_1.py" lineno="178" time="3.1538302898406982" sim_time_ns="1000.001" ratio_time="317.07508270855965" />
   </testsuite>
 </testsuites>

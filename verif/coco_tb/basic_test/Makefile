@@ -17,6 +17,8 @@ VERILOG_SOURCES += $(PWD)/../../../hdl/control_unit.v
 MODULE=test_1 
 TOPLEVEL=anu_core
 
+#VERILATOR_ARGS += --Wno-LATCH
+
 COCOTB_LOG_LEVEL=DEBUG 
 COCOTB_SCHEDULER_DEBUG=1
 
