@@ -64,10 +64,7 @@ assign jal = ctrlSig_w[7];
 assign auipc = ctrlSig_w[8];
 assign lui = ctrlSig_w[9];
 
-initial begin
-    $dumpfile("test1");
-    $dumpvars(0);
-end
+
 
 
 

@@ -39,6 +39,7 @@ MSB ---------------- LSB
 X, X, X, X, X, X, LUI, AUIPC, JAL, JALR, Branch, STORE, LOAD, Shift-OP, I-Frame, ALU_op
 */
 
+import "DPI-C" function string getenv(input string env_name); 
 module uCode_decode (alu_uop, opcode, ctrlSig);
 input [6:0] opcode;
 input [2:0] alu_uop;
@@ -47,8 +48,9 @@ reg [15:0] ctrlSig_t;
 reg [15:0] uCode [127:0];
 wire shift_op;
 
-initial
-	$readmemb("/home/akhilkushe/Desktop/Projects/CPU_scratch/hdl/uCode.hex", uCode);
+initial begin 
+	$readmemb(getenv("UCODE"), uCode);
+end
 
 always @(*) begin
 	ctrlSig_t = uCode[opcode];

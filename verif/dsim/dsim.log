@@ -1,0 +1,122 @@
+=N:[UsageMeter (2025-11-01 00:04:07 +0530)] Using /etc/ssl/certs as location of CA certificates to verify license server.
+=N:[UsageMeter (2025-11-01 00:04:08 +0530)] usage server initial connection
+=N:[License] 
+Licensed for Altair DSim Cloud.
+=N:[License] New lease granted.
+Analyzing...
+Elaborating...
+  Top-level modules:
+    $unit
+    branch_unit
+    top_tb
+=W:[MissingCallbackAcc]:
+    Only waveforms for signals with callback access can be dumped.                     
+    For $dumpvars to be useful command options +acc+b or -acc-specs should be used.    
+
+
+    ../../hdl/top_tb.v:43:4    
+
+  Found 19 unique specialization(s) of 17 design element(s).
+Optimizing...
+Building models...
+PLI/VPI access: (none) 
+Simulation time precision is 1ns.
+Linking image.so...
+Using default typical min/typ/max.
+=S:Begin run-time elaboration and static initialization...
+=N:Starting event scheduler...
+=W:[ReadMemAddr] ../../hdl/top_tb.v:32:2: Too few data items, encountered EOF before end of specified address range.
+=N:[dumpVCD] ../../hdl/top_tb.v:42:4: preparing VCD dump to 'test1'.
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 1
+out          0
+Signed bit          -5
+Unsigned bit   67108859
+f7 0
+out   67108859
+Signed bit           0
+Unsigned bit          0
+f7 1
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 1
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit        -693
+Unsigned bit    2096459
+f7 0
+out    2096459
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit          -2
+Unsigned bit    4194302
+f7 0
+out    4194302
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 1
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+Signed bit        2088
+Unsigned bit       2088
+f7 1
+out       2088
+Signed bit        -534
+Unsigned bit 4294966762
+f7 1
+out 4294966762
+Signed bit           0
+Unsigned bit          0
+f7 0
+out          0
+=T:Simulation terminated by $finish at time 1006 (../../hdl/top_tb.v:47);
+Run directory: /home/akarsh/projects/AnuRV32/verif/dsim
+  System timescale is 1ns / 1ns
+  Altair DSim version: 2025.1.0 (b:R #c:449 h:df8da7d488 os:rocky_8.10)
+  Random seed: (defaulted to 1)

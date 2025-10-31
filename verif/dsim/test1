@@ -1,0 +1,312 @@
+$date November 01, 2025 00:04:09
+$end
+$version DSim 2025.1
+$end
+$timescale 1 ns $end
+$scope module $pkgs $end
+$scope module std $end
+$scope function randomize $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module $unit $end
+$scope function getenv $end
+$upscope $end
+$upscope $end
+$scope module branch_unit $end
+$var wire 1 " eq $end
+$var wire 1 " eq_w $end
+$var wire 1 ( lt $end
+$var wire 32 % op1[31:0] $end
+$var wire 32 & op2[31:0] $end
+$var wire 1 ' sig $end
+$var wire 1 # sig_lt_w $end
+$var wire 1 $ usig_lt_w $end
+$upscope $end
+$scope module top_tb $end
+$scope module c1 $end
+$scope module alu_inst $end
+$var wire 32 e SR_signed[31:0] $end
+$var wire 32 f SR_unsigned[31:0] $end
+$var wire 1 A f7 $end
+$var reg 32 H out[31:0] $end
+$var wire 3 ? uop[2:0] $end
+$upscope $end
+$scope module ext32 $end
+$scope module sE16 $end
+$var wire 16 l data_in[15:0] $end
+$upscope $end
+$scope module sE8 $end
+$var wire 8 k data_in[7:0] $end
+$upscope $end
+$scope module zE16 $end
+$var wire 16 l data_in[15:0] $end
+$upscope $end
+$scope module zE8 $end
+$var wire 8 k data_in[7:0] $end
+$upscope $end
+$var reg 32 G data_out[31:0] $end
+$var wire 32 j s_extend16_w[31:0] $end
+$var wire 32 i s_extend8_w[31:0] $end
+$var wire 32 h z_extend16_w[31:0] $end
+$var wire 32 g z_extend8_w[31:0] $end
+$upscope $end
+$scope module instr_decode_inst $end
+$scope module extract_imm_inst $end
+$var reg 32 a imm[31:0] $end
+$upscope $end
+$scope module uCode $end
+$var reg 16 ^ ctrlSig_t[15:0] $end
+$var wire 1 ` shift_op $end
+$upscope $end
+$var wire 7 b opcode[6:0] $end
+$upscope $end
+$scope module pc $end
+$var reg 32 U pc_o[31:0] $end
+$var reg 32 m pc_r[31:0] $end
+$upscope $end
+$scope module register_file_inst $end
+$scope begin register_file[0] $end
+$upscope $end
+$scope begin register_file[10] $end
+$upscope $end
+$scope begin register_file[11] $end
+$upscope $end
+$scope begin register_file[12] $end
+$upscope $end
+$scope begin register_file[13] $end
+$upscope $end
+$scope begin register_file[14] $end
+$upscope $end
+$scope begin register_file[15] $end
+$upscope $end
+$scope begin register_file[16] $end
+$upscope $end
+$scope begin register_file[17] $end
+$upscope $end
+$scope begin register_file[18] $end
+$upscope $end
+$scope begin register_file[19] $end
+$upscope $end
+$scope begin register_file[1] $end
+$upscope $end
+$scope begin register_file[20] $end
+$upscope $end
+$scope begin register_file[21] $end
+$upscope $end
+$scope begin register_file[22] $end
+$upscope $end
+$scope begin register_file[23] $end
+$upscope $end
+$scope begin register_file[24] $end
+$upscope $end
+$scope begin register_file[25] $end
+$upscope $end
+$scope begin register_file[26] $end
+$upscope $end
+$scope begin register_file[27] $end
+$upscope $end
+$scope begin register_file[28] $end
+$upscope $end
+$scope begin register_file[29] $end
+$upscope $end
+$scope begin register_file[2] $end
+$upscope $end
+$scope begin register_file[30] $end
+$upscope $end
+$scope begin register_file[31] $end
+$upscope $end
+$scope begin register_file[3] $end
+$upscope $end
+$scope begin register_file[4] $end
+$upscope $end
+$scope begin register_file[5] $end
+$upscope $end
+$scope begin register_file[6] $end
+$upscope $end
+$scope begin register_file[7] $end
+$upscope $end
+$scope begin register_file[8] $end
+$upscope $end
+$scope begin register_file[9] $end
+$upscope $end
+$var reg 32 : o1[31:0] $end
+$var reg 32 = o2[31:0] $end
+$var wire 5 8 rd[4:0] $end
+$var wire 1 d ren $end
+$var wire 1 C wen $end
+$upscope $end
+$var wire 32 I alu_out_imm_w[31:0] $end
+$var wire 32 H alu_out_w[31:0] $end
+$var reg 3 ? alu_uop_r[2:0] $end
+$var wire 1 \ auipc $end
+$var wire 1 N b_hbar_w $end
+$var wire 1 Y branch_op $end
+$var reg 1 D branch_r $end
+$var wire 1 O bypass_w $end
+$var wire 1 p clk $end
+$var wire 16 F ctrlSig_w[15:0] $end
+$var wire 32 - data_in[31:0] $end
+$var wire 32 , data_out[31:0] $end
+$var reg 32 K data_wb_r[31:0] $end
+$var wire 32 J data_wb_w[31:0] $end
+$var wire 32 G extended_data_in[31:0] $end
+$var wire 1 @ f7_w $end
+$var wire 1 V i_frame $end
+$var wire 32 9 imm_w[31:0] $end
+$var wire 32 * instr[31:0] $end
+$var wire 1 [ jal $end
+$var wire 1 Z jalr $end
+$var wire 1 W ld $end
+$var wire 1 ] lui $end
+$var reg 2 . mem_access_mode[1:0] $end
+$var reg 2 M mem_access_mode_r[1:0] $end
+$var wire 32 + mem_addr[31:0] $end
+$var wire 32 ; op1_pc_w[31:0] $end
+$var wire 32 : op1_w[31:0] $end
+$var wire 32 < op2_imm_w[31:0] $end
+$var wire 32 = op2_w[31:0] $end
+$var wire 32 S pc_imm_w[31:0] $end
+$var wire 1 Q pc_mode0_w $end
+$var wire 1 R pc_mode1_w $end
+$var wire 2 T pc_mode_w[1:0] $end
+$var wire 32 ) pc_o[31:0] $end
+$var wire 32 U pc_w[31:0] $end
+$var wire 32 L rd_data_w[31:0] $end
+$var reg 5 8 rd_r[4:0] $end
+$var wire 5 7 rd_w[4:0] $end
+$var wire 5 5 rs1_w[4:0] $end
+$var wire 5 6 rs2_w[4:0] $end
+$var wire 1 o rst_n $end
+$var wire 1 P sig_w $end
+$var wire 1 X st $end
+$var wire 1 n stall $end
+$var wire 3 > uop_w[2:0] $end
+$var reg 1 A valid_f7_r $end
+$var reg 1 C wen_r $end
+$var wire 1 B wen_w $end
+$var wire 1 E zero_w $end
+$upscope $end
+$scope module dmem $end
+$var wire 2 . access_mode[1:0] $end
+$var wire 32 + addr[31:0] $end
+$var wire 32 , data_in[31:0] $end
+$var reg 32 - data_out[31:0] $end
+$var wire 1 4 en $end
+$upscope $end
+$scope module instr_mem $end
+$var wire 16 2 addr[15:0] $end
+$var reg 32 * data[31:0] $end
+$upscope $end
+$var wire 2 . access_mode_w[1:0] $end
+$var wire 32 + addr_w[31:0] $end
+$var reg 1 / clk $end
+$var wire 32 , data_core_mem[31:0] $end
+$var wire 32 - data_mem_core[31:0] $end
+$var wire 32 * instr_w[31:0] $end
+$var wire 32 ) pc_w[31:0] $end
+$var reg 1 0 rst_n $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x"
+x"
+x(
+bz %
+bz &
+z'
+z#
+x$
+bx e
+bx f
+xA
+bx H
+bx ?
+bx l
+bx k
+bx l
+bx k
+b0xxxxxxxxxxxxxxxx G
+bx j
+bx i
+b0xxxxxxxxxxxxxxxx h
+b0xxxxxxxx g
+b0 a
+bx ^
+x`
+bx b
+bx U
+bx m
+bx :
+bx =
+bx 8
+1d
+xC
+bx I
+bx H
+bx ?
+x\
+xN
+xY
+xD
+xO
+0p
+bx F
+bx -
+bx ,
+bx K
+bx J
+b0xxxxxxxxxxxxxxxx G
+x@
+xV
+b0 9
+bx *
+x[
+xZ
+xW
+x]
+bx .
+bx M
+bx +
+bx ;
+bx :
+bx <
+bx =
+bx S
+xQ
+xR
+bx T
+bx )
+bx U
+bx L
+bx 8
+bx 7
+bx 5
+bx 6
+1o
+zP
+xX
+0n
+bx >
+xA
+xC
+xB
+xE
+bx .
+bx +
+bx ,
+bx -
+14
+bx 2
+bx *
+bx .
+bx +
+0/
+bx ,
+bx -
+bx *
+bx )
+10
+$end
+#1006

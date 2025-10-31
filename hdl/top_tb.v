@@ -28,8 +28,8 @@ anu_core c1 (.stall(1'b0),
 		.mem_addr(addr_w),
 		.mem_access_mode(access_mode_w));
 
-initial
-	$readmemb("/home/akhilkushe/Desktop/Projects/CPU_scratch/verif/coco_tb/basic_test/instr_test.bin", instr_mem.mem);
+initial 
+	$readmemb(getenv("INSTR_TEST"), instr_mem.mem);
 
 always begin
 	clk = 0;
@@ -39,9 +39,12 @@ always begin
 end
 
 initial begin
+   $dumpfile("test1");
+   $dumpvars(0);
 	rst_n = 1;
 	#1 rst_n = 0;
 	#5 rst_n = 1;
+	#1000 ; $finish; 
 end
 
 endmodule

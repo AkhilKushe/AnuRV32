@@ -5,3 +5,5 @@ sim_build
 __pycache__
 bkp
 .obsidian
+*.html
+*.db
