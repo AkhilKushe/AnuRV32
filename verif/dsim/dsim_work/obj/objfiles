@@ -2,7 +2,8 @@ dsim_work/obj/LR.o
 dsim_work/obj/LM0db15a258e15c91063c6b572753a502d4b30f18913971db5ce0b98898920926ba.o
 dsim_work/obj/LQ0a328b56c5a1f4de450dc45102dc99f556edc81ce02eba25882798c52b72a2257.o
 dsim_work/obj/LMbranch_unit.o
-dsim_work/obj/LMtop_tb.o
+dsim_work/obj/LMtop.o
 dsim_work/obj/LBstd.o
+dsim_work/obj/LIanu_core_interface.o
 dsim_work/obj/LMdata_memory.o
 dsim_work/obj/LManu_core.o

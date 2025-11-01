@@ -7,4 +7,6 @@
 ../../hdl/register_file.v
 ../../hdl/branch_unit.v
 ../../hdl/control_unit.v
-../../hdl/top_tb.v
+../../hdl/anu_core_interface.sv
+// ../../hdl/top_tb.v
+../../hdl/top.v
