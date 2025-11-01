@@ -1,0 +1,8 @@
+Find a more suitable reference model which can execute SRAI instructions as well
+- The github riscv python model is good for data structures, can use for UVM
+- Can checkout spike
+
+Memory model in UVM
+- For generating and testing trace instructions
+
+Support for verifying Branch instructions in UVM
