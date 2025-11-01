@@ -5,3 +5,6 @@ sim_build
 __pycache__
 bkp
 .obsidian
+*.log
+*.xml
+*.vcd
