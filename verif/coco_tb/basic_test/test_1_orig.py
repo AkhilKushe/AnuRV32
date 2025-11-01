@@ -1,7 +1,6 @@
 import cocotb
 from cocotb.triggers import FallingEdge, Timer, RisingEdge, Edge, Event
 from cocotb.clock import Clock
-import cocotb.utils
 import cocotb_coverage.coverage
 from riscvmodel.insn import *
 from riscvmodel.regnames import *
@@ -189,42 +188,10 @@ instr_table = [
     # I-type JALR
     ("JALR", 0b1100111, 0b000, None),
 ]
-bin_labels = []
-bins = []
-for bi in instr_table :
-    bin_labels.append(bi[0])
-    bins.append(bi[1:])
-
-
-def compare_with_none (x, y):
-    if (y[1] == None) and (y[2]==None):
-        return (x[0]==y[0])
-    
-    if y[2] ==  None:
-        return (x[0]==y[0])&(x[1]==y[1])
-    
-    return (x[0]==y[0])&(x[1]==y[1])&(x[2]==y[2])
-
-#coverage akhil definition  
+#coverage definition  
 INST_Coverage = coverage_section (
-  CoverPoint("top.op_code", xf=lambda  instr : ((instr)&(0x7F), (instr>>12)&(0x7), (instr>>25)&(0x7F)), bins=bins, bins_labels=bin_labels, rel=compare_with_none),
+  CoverPoint("top.instr", xf=lambda  instr : instr&0x7F, bins=[0b0110011, 0b0010011, 0b0000011, 0b1110011], bins_labels=["Arith", "Arith imm", "Load Store", "Illegal"]),
 )
-
-
-
-#coverage akarsh 
-#INST_Coverage_akarsh = coverage_section (
-#  CoverPoint("top.instr", xf=lambda  instr : ((instr>>25) & 0x7F) << (10) | ((instr>>12)&0xF) << 7 | (instr&0x7F), bins=[0b01100110000000000], bin_labels=bin_labels),
-#)
-
-
-
-
-
-#original
-#INST_Coverage_copy = coverage_section (
-#  CoverPoint("top.instr", xf=lambda  instr : instr&0x7F, bins=[0b0110011, 0b0010011, 0b0000011, 0b1110011], bins_labels=["Arith", "Arith imm", "Load Store", "Illegal"]),
-#)
 
 class Monitor:
     def __init__(self, dut) -> None:
@@ -235,14 +202,8 @@ class Monitor:
     # calling coverage / sampling coverage 
     @INST_Coverage   
     def sample(self, instr):
-        # cocotb.log.info("DEBUG akarsh", type(instr))
-        print(bin(instr))
-        #print(instr>>1, bin(instr >> 1))
-        #print(bin((instr>>25) & 0x7F))
-        
-        #print(bin(((instr>>25) & 0x7F) << (10) | ((instr>>12)&0xF) << 7 | (instr&0x7F)))
-        #exit()
-       
+        print(instr)
+        pass
 
     async def main(self):
         while True:
@@ -250,10 +211,7 @@ class Monitor:
             if not self.dut.instr.value.is_resolvable:
                 continue
 
-            #cocotb.log.info(f"{self.dut.instr.value} at {cocotb.utils.get_sim_time('ns')}")
-            if self.dut.instr.value==0:
-                continue
-            #continue
+            print("DEBUG AKARSH", type(self.dut.instr.value), self.dut.instr.value)
             instr = decode(self.dut.instr.value)
             alu_out = self.dut.alu_inst.out.value
             self.ref_model.execute(instr)
@@ -302,7 +260,7 @@ async def random_alu(dut):
     cocotb.start_soon(dri.main())
     cocotb.start_soon(mon.main())
 
-    await Timer(100, units="ns")  # wait a bit
+    await Timer(1000, units="ns")  # wait a bit
     out_instr.close()
     #assert mon.mismatch == 0
     print("Final state")
@@ -318,7 +276,7 @@ async def random_alu(dut):
 # 2. Create memory software model
 # 2. Create random load and store instruction streams
 # 3.
-# @cocotb.test()
+#@cocotb.test()
 async def directed_load_store(dut):
 
     clock = Clock(dut.clk, 2, units="ns")
@@ -328,8 +286,6 @@ async def directed_load_store(dut):
     dri_gen_port = FIFO()
     dri = Driver(dut, dri_gen_port)
     prog = Program([
-                InstructionADD(x1, x0, 0xde),
-                InstructionADD(x1, x1, 0xde),
                 InstructionADDI(x1, x0, 0xde),
                 InstructionSLLI(x1, x1, 8),
                 InstructionADDI(x1, x1, 0xad),

@@ -1,8 +1,41 @@
-<top abs_name="top" size="4" coverage="2" cover_percentage="50.0">
-  <instr size="4" coverage="2" cover_percentage="50.0" abs_name="top.instr" weight="1" at_least="1">
-    <bin0 bin="Arith" hits="0" abs_name="top.instr.bin0" />
-    <bin1 bin="Arith imm" hits="7" abs_name="top.instr.bin1" />
-    <bin2 bin="Load Store" hits="3" abs_name="top.instr.bin2" />
-    <bin3 bin="Illegal" hits="0" abs_name="top.instr.bin3" />
-  </instr>
+<top abs_name="top" size="37" coverage="16" cover_percentage="43.24">
+  <op_code size="37" coverage="16" cover_percentage="43.24" abs_name="top.op_code" weight="1" at_least="1">
+    <bin0 bin="ADD" hits="0" abs_name="top.op_code.bin0" />
+    <bin1 bin="SUB" hits="3" abs_name="top.op_code.bin1" />
+    <bin2 bin="SLL" hits="3" abs_name="top.op_code.bin2" />
+    <bin3 bin="SLT" hits="3" abs_name="top.op_code.bin3" />
+    <bin4 bin="SLTU" hits="3" abs_name="top.op_code.bin4" />
+    <bin5 bin="XOR" hits="3" abs_name="top.op_code.bin5" />
+    <bin6 bin="SRL" hits="4" abs_name="top.op_code.bin6" />
+    <bin7 bin="SRA" hits="5" abs_name="top.op_code.bin7" />
+    <bin8 bin="OR" hits="1" abs_name="top.op_code.bin8" />
+    <bin9 bin="AND" hits="0" abs_name="top.op_code.bin9" />
+    <bin10 bin="ADDI" hits="2" abs_name="top.op_code.bin10" />
+    <bin11 bin="SLTI" hits="2" abs_name="top.op_code.bin11" />
+    <bin12 bin="SLTIU" hits="3" abs_name="top.op_code.bin12" />
+    <bin13 bin="XORI" hits="7" abs_name="top.op_code.bin13" />
+    <bin14 bin="ORI" hits="3" abs_name="top.op_code.bin14" />
+    <bin15 bin="ANDI" hits="1" abs_name="top.op_code.bin15" />
+    <bin16 bin="SLLI" hits="2" abs_name="top.op_code.bin16" />
+    <bin17 bin="SRLI" hits="3" abs_name="top.op_code.bin17" />
+    <bin18 bin="SRAI" hits="0" abs_name="top.op_code.bin18" />
+    <bin19 bin="LB" hits="0" abs_name="top.op_code.bin19" />
+    <bin20 bin="LH" hits="0" abs_name="top.op_code.bin20" />
+    <bin21 bin="LW" hits="0" abs_name="top.op_code.bin21" />
+    <bin22 bin="LBU" hits="0" abs_name="top.op_code.bin22" />
+    <bin23 bin="LHU" hits="0" abs_name="top.op_code.bin23" />
+    <bin24 bin="SB" hits="0" abs_name="top.op_code.bin24" />
+    <bin25 bin="SH" hits="0" abs_name="top.op_code.bin25" />
+    <bin26 bin="SW" hits="0" abs_name="top.op_code.bin26" />
+    <bin27 bin="BEQ" hits="0" abs_name="top.op_code.bin27" />
+    <bin28 bin="BNE" hits="0" abs_name="top.op_code.bin28" />
+    <bin29 bin="BLT" hits="0" abs_name="top.op_code.bin29" />
+    <bin30 bin="BGE" hits="0" abs_name="top.op_code.bin30" />
+    <bin31 bin="BLTU" hits="0" abs_name="top.op_code.bin31" />
+    <bin32 bin="BGEU" hits="0" abs_name="top.op_code.bin32" />
+    <bin33 bin="LUI" hits="0" abs_name="top.op_code.bin33" />
+    <bin34 bin="AUIPC" hits="0" abs_name="top.op_code.bin34" />
+    <bin35 bin="JAL" hits="0" abs_name="top.op_code.bin35" />
+    <bin36 bin="JALR" hits="0" abs_name="top.op_code.bin36" />
+  </op_code>
 </top>

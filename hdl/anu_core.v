@@ -62,7 +62,7 @@ assign auipc = ctrlSig_w[8];
 assign lui = ctrlSig_w[9];
 
 initial begin
-    $dumpfile("test1");
+    $dumpfile("test1.vcd");
     $dumpvars(0);
 end
 

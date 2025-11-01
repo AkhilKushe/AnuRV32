@@ -1,17 +1,50 @@
 top:
-  cover_percentage: 50.0
-  coverage: 2
-  size: 4
+  cover_percentage: 43.24
+  coverage: 16
+  size: 37
   type: <class 'cocotb_coverage.coverage.CoverItem'>
-top.instr:
+top.op_code:
   at_least: 1
   bins:_hits:
-    Arith: 0
-    Arith imm: 7
-    Illegal: 0
-    Load Store: 3
-  cover_percentage: 50.0
-  coverage: 2
-  size: 4
+    ADD: 0
+    ADDI: 2
+    AND: 0
+    ANDI: 1
+    AUIPC: 0
+    BEQ: 0
+    BGE: 0
+    BGEU: 0
+    BLT: 0
+    BLTU: 0
+    BNE: 0
+    JAL: 0
+    JALR: 0
+    LB: 0
+    LBU: 0
+    LH: 0
+    LHU: 0
+    LUI: 0
+    LW: 0
+    OR: 1
+    ORI: 3
+    SB: 0
+    SH: 0
+    SLL: 3
+    SLLI: 2
+    SLT: 3
+    SLTI: 2
+    SLTIU: 3
+    SLTU: 3
+    SRA: 5
+    SRAI: 0
+    SRL: 4
+    SRLI: 3
+    SUB: 3
+    SW: 0
+    XOR: 3
+    XORI: 7
+  cover_percentage: 43.24
+  coverage: 16
+  size: 37
   type: <class 'cocotb_coverage.coverage.CoverPoint'>
   weight: 1
