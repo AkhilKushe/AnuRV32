@@ -32,13 +32,7 @@ always @(*) begin
 		OR : out = op1 | op2;
 		XOR : out = op1 ^ op2;
 		SL : out = op1 << (op2 & 32'h0000001f);
-		SR : begin
-			$display("Signed bit %d",SR_signed);
-			$display("Unsigned bit %d", SR_unsigned);
-			$display("f7 %d", f7);
-			out = f7 ? SR_signed : SR_unsigned;
-			$display("out %d", out);
-		end 
+		SR : out = f7 ? SR_signed : SR_unsigned;
 		SLT : out = ( $signed(op1) < $signed(op2) );
 		SLTU : out = ( op1 < op2 );
 	endcase

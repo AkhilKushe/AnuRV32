@@ -1,0 +1,3 @@
+[submodule "verif/RVmodel/riscv-python-model"]
+	path = verif/RVmodel/riscv-python-model
+	url = git@github.com:AkhilKushe/riscv-python-model.git

@@ -3,6 +3,7 @@ from pathlib import Path
 
 import cocotb.simulator
 sys.path.append(str(Path("py_tb_env").resolve()))
+sys.path.insert(0, (str(Path("../../RVmodel/riscv-python-model/").resolve())))
 
 import cocotb
 from cocotb.triggers import FallingEdge, Timer, RisingEdge, Edge, Event
