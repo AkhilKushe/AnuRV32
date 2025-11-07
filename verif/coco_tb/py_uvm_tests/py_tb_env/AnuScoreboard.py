@@ -38,5 +38,4 @@ class AnuScoreboard(uvm_component):
                 self.logger.info(f"Mismatch {instr}, {instr.encode()} @ {t}")
                 self.logger.info(f"Executed value = {regs}" )
                 self.logger.info(f"Expected value = {expected_reg}")
-                self.mismatch += 1
                 raise cocotb.result.TestError()

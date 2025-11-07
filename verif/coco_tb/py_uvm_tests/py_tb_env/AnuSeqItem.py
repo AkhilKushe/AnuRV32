@@ -4,9 +4,12 @@ from riscvmodel.insn import *
 from riscvmodel.variant import RV32I
 
 class AnuSeqItem (uvm_sequence_item):
-    test_set = [InstructionADD, InstructionADDI, InstructionSUB, InstructionXOR, InstructionXORI, InstructionOR, InstructionORI, InstructionAND, InstructionANDI, InstructionSLT, InstructionSLTI, InstructionSLTU, InstructionSLTIU, InstructionSLL, InstructionSLLI, InstructionSRL, InstructionSRLI, InstructionSRA]
     def __init__(self, name):
         super().__init__(name)
+        self.test_set = ConfigDB().get(None, ".", "TEST_SET", None)
+        if self.test_set is None:
+            uvm_fatal(self.get_type_name(), " : NO_BFM_FOUND")
+
         self.stall = 0
         self.instr = 0
         self.data_in = 0
@@ -20,7 +23,7 @@ class AnuSeqItem (uvm_sequence_item):
         self.reg_mem = []
 
     def randomize(self):
-        self.instr_type = random.choice(AnuSeqItem("tr").test_set)
+        self.instr_type = random.choice(self.test_set)
         self.instr = self.instr_type() 
         self.instr.randomize(RV32I)
 
