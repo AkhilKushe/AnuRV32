@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1761998879" />
+    <testcase name="random_alu" classname="tp_tb" file="/home/akarsh/.local/lib/python3.12/site-packages/pyuvm/extension_classes.py" lineno="15" time="0.14279699325561523" sim_time_ns="101.501" ratio_time="710.8062830028017">
+      <failure message="Test failed with RANDOM_SEED=1761998879" />
+    </testcase>
+  </testsuite>
+</testsuites>

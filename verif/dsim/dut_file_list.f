@@ -1,12 +1,11 @@
-../../hdl/anu_core.v
-../../hdl/alu.v
-../../hdl/ID.v
-../../hdl/extend32.v
-../../hdl/memory.v
-../../hdl/p_cntr.v
-../../hdl/register_file.v
-../../hdl/branch_unit.v
-../../hdl/control_unit.v
-../../hdl/anu_core_interface.sv
-// ../../hdl/top_tb.v
-../../hdl/top.v
+$PROJECT_TOP/hdl/anu_core.v
+$PROJECT_TOP/hdl/alu.v
+$PROJECT_TOP/hdl/ID.v
+$PROJECT_TOP/hdl/extend32.v
+$PROJECT_TOP/hdl/memory.v
+$PROJECT_TOP/hdl/p_cntr.v
+$PROJECT_TOP/hdl/register_file.v
+$PROJECT_TOP/hdl/branch_unit.v
+$PROJECT_TOP/hdl/control_unit.v
+$PROJECT_TOP/hdl/anu_core_interface.sv
+$PROJECT_TOP/hdl/top.v

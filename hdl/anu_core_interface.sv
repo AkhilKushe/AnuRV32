@@ -9,4 +9,10 @@ logic  [31:0] data_out;
 logic  [31:0] mem_addr;
 logic  [1:0] mem_access_mode;
 
+modport dut (input instr); 
+
+clocking mon @(posedge clk); 
+    input  instr; 
+endclocking
+
 endinterface 

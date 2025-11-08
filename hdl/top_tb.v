@@ -39,8 +39,8 @@ always begin
 end
 
 initial begin
-   $dumpfile("test1");
-   $dumpvars(0);
+//    $dumpfile("test1");
+//    $dumpvars(0);
 	rst_n = 1;
 	#1 rst_n = 0;
 	#5 rst_n = 1;

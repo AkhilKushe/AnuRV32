@@ -8,3 +8,6 @@ bkp
 *.html
 *.db
 *.mxd
+*.log 
+dsim_work
+verif/dsim/dsim_work

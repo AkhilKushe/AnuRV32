@@ -1,6 +1,8 @@
+import uvm_pkg::*; 
+
 module top();
 
-reg clk;
+bit clk;
 reg [31:0] mem_temp [65536-1:0]; 
 anu_core_interface anu_inf(clk); 
 
@@ -24,18 +26,18 @@ anu_core c1 (.stall(anu_inf.stall),
 		.mem_access_mode(anu_inf.mem_access_mode));
 
 initial begin  
+	uvm_config_db#(virtual anu_core_interface)::set(uvm_root::get(), "*", "anu_inf", anu_inf); 
+	run_test("base_test");
+end 
+
+initial begin  
 	$readmemb(getenv("INSTR_TEST"), instr_mem.mem);
 end 
 
-always begin
-	clk = 0;
-	#5;
-	clk = 1;
-	#5;
-end
+always #5 clk = ~clk;  
 
 initial begin
-   $dumpvars();
+//    $dumpvars();
 	anu_inf.rst_n = 1;
 	#1 anu_inf.rst_n = 0;
 	#5 anu_inf.rst_n = 1;
