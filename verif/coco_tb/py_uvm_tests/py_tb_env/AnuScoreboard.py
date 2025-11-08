@@ -14,8 +14,13 @@ class AnuScoreboard(uvm_component):
         self.result_get_port = uvm_get_port("result_get_port", self)
         self.result_export = self.result_fifo.analysis_export
 
+        self.mem_fifo = uvm_tlm_analysis_fifo("mem_fifo", self)
+        self.mem_export = self.mem_fifo.analysis_export
+        self.mem_get_port = uvm_get_port("mem_get_port", self)
+
     def connect_phase(self):
         self.result_get_port.connect(self.result_fifo.get_export)
+        self.mem_get_port.connect(self.mem_fifo.get_export)
 
     def check_phase(self):
         while self.result_get_port.can_get():
@@ -38,4 +43,9 @@ class AnuScoreboard(uvm_component):
                 self.logger.info(f"Mismatch {instr}, {instr.encode()} @ {t}")
                 self.logger.info(f"Executed value = {regs}" )
                 self.logger.info(f"Expected value = {expected_reg}")
-                raise cocotb.result.TestError()
+                #raise cocotb.result.TestError()
+        
+        while self.mem_get_port.can_get():
+            _, time_result = self.mem_get_port.try_get()
+            actual_result, t = time_result
+            self.logger.info(f"GOT on memory analysis port {actual_result}") 

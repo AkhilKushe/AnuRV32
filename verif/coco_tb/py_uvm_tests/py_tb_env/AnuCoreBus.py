@@ -17,7 +17,6 @@ class AnuCoreBus () :
     async def execute_instr(self, tx : AnuSeqItem):
         self.dut.stall.value = tx.stall 
         self.dut.instr.value = tx.instr.encode()
-        self.dut.data_in = 0
         await RisingEdge(self.sysclk)
         return get_val(self.dut.pc_o.value)
 

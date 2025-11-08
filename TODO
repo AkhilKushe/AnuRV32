@@ -3,6 +3,10 @@ Find a more suitable reference model which can execute SRAI instructions as well
 - Can checkout spike
 
 Memory model in UVM
-- For generating and testing trace instructions
+[x] For generating and testing trace instructions
+[ ] Refine the memory model for better comparison of the memory traces
 
 Support for verifying Branch instructions in UVM
+
+Bugs:
+[ ] Fix the bug with load and store -> currently lbu and lb, lhu and lh are doing the same unsigned load, lb, lh should do signed load

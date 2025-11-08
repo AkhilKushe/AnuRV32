@@ -31,3 +31,9 @@ iv. SRA, SRAI
 - interesting bug, needed to make signed wire, not happening with $signed in mux select line
 
 ---------------------------- ALU looks good -------------------------------------------------
+
+Memory load store equation :
+i. Found bug in load instruction
+    - lb, lh are signed loading
+    - lbu, lhu are unsigned loads
+    Current I think I have only implemented lb or lh in unsigned mode

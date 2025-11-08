@@ -8,7 +8,7 @@ class AnuSeqItem (uvm_sequence_item):
         super().__init__(name)
         self.test_set = ConfigDB().get(None, ".", "TEST_SET", None)
         if self.test_set is None:
-            uvm_fatal(self.get_type_name(), " : NO_BFM_FOUND")
+            uvm_fatal(self.get_type_name(), " : TEST_SET not foudn")
 
         self.stall = 0
         self.instr = 0
@@ -30,6 +30,8 @@ class AnuSeqItem (uvm_sequence_item):
     def __str__(self):
         buff = ""
         for attr in vars(self).keys():
+            if attr == "test_set":
+                continue
             buff += f" {attr} : {getattr(self, attr)} "
         
         return buff
